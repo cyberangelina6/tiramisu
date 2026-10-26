@@ -1,0 +1,253 @@
+/* the font file lives in the font folder so it also loads on neocities */
+@font-face {
+    font-family: "Jacquard 24";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("font/jacquard-24.woff2") format("woff2");
+}
+
+/* every image is a 144x144 pixel canvas, --px is the size of one of those pixels */
+:root {
+    --px: clamp(2px, 0.55vw, 4px);
+    /* the pop-up tiramisu is drawn a little smaller than everything else */
+    --cake-px: calc(var(--px) * 0.75);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+/* the page scrolls if the leaderboard doesn't fit, .game's auto margin keeps it centred otherwise */
+body {
+    display: flex;
+    min-height: 100%;
+    margin: 0;
+    padding: calc(var(--px) * 14) 16px;
+    background-color: pink;
+    font-family: "Jacquard 24", sans-serif;
+    font-weight: 400;
+    color: #5a1f4a;
+    overflow-x: hidden;
+}
+
+.game {
+    margin: auto;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: calc(var(--px) * 6);
+}
+
+/* the stat sits just above the top left corner of the frame */
+.counter {
+    position: absolute;
+    left: 0;
+    bottom: calc(100% + var(--px) * 3);
+    margin: 0;
+    font-size: calc(var(--px) * 5);
+    white-space: nowrap;
+}
+
+.caption {
+    max-width: 100%;
+    text-align: center;
+}
+
+.title {
+    margin: 0;
+    font-size: calc(var(--px) * 9);
+    font-weight: 400;
+}
+
+.subtitle {
+    margin: calc(var(--px) * 2) 0 0;
+    font-size: calc(var(--px) * 5);
+}
+
+.leaderboard {
+    width: calc(var(--px) * 90);
+    max-width: 100%;
+    font-size: calc(var(--px) * 5);
+}
+
+.leaderboard-title {
+    margin: 0 0 calc(var(--px) * 3);
+    font-size: calc(var(--px) * 7);
+    font-weight: 400;
+    text-align: center;
+}
+
+.save-score {
+    display: flex;
+    gap: calc(var(--px) * 2);
+}
+
+.save-score[hidden] {
+    display: none;
+}
+
+.player-name,
+.save-button {
+    font: inherit;
+    color: inherit;
+    padding: calc(var(--px) * 1) calc(var(--px) * 2);
+    border: calc(var(--px) * 0.5) solid #5a1f4a;
+    border-radius: 0;
+}
+
+.player-name {
+    flex: 1;
+    min-width: 0;
+    background-color: #fff0f5;
+}
+
+.save-button {
+    background-color: #5a1f4a;
+    color: pink;
+    cursor: pointer;
+}
+
+.save-button:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+.leaderboard-status {
+    min-height: 1.2em;
+    margin: calc(var(--px) * 2) 0;
+    text-align: center;
+}
+
+.leaderboard-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.leaderboard-list li {
+    display: flex;
+    gap: calc(var(--px) * 3);
+}
+
+.leaderboard-rank {
+    min-width: 1.5em;
+}
+
+/* the player's own name stands out */
+.leaderboard-list .is-you {
+    color: #c2185b;
+}
+
+.leaderboard-name {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+img {
+    display: block;
+    image-rendering: pixelated;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+/* stage is cropped to the purple frame (78x65 pixels of the canvas) */
+.stage {
+    position: relative;
+    width: calc(var(--px) * 78);
+    height: calc(var(--px) * 65);
+}
+
+.frame {
+    position: absolute;
+    left: calc(var(--px) * -26);
+    top: calc(var(--px) * -29);
+    width: calc(var(--px) * 144);
+    height: calc(var(--px) * 144);
+    max-width: none;
+    pointer-events: none;
+}
+
+/* the inside of the frame, the character is clipped to it */
+.window {
+    position: absolute;
+    left: calc(var(--px) * 2);
+    top: calc(var(--px) * 2);
+    width: calc(var(--px) * 74);
+    height: calc(var(--px) * 59);
+    padding: 0;
+    border: none;
+    background: none;
+    overflow: hidden;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.window:focus-visible {
+    outline: calc(var(--px) * 1) solid #fff;
+}
+
+.character {
+    position: absolute;
+    left: calc(var(--px) * -17);
+    top: calc(var(--px) * -19);
+    width: calc(var(--px) * 144);
+    height: calc(var(--px) * 144);
+    max-width: none;
+    pointer-events: none;
+}
+
+/* the tiramisu and "+1" that pop up to the right of the frame */
+.plus-one {
+    position: absolute;
+    left: calc(100% + var(--px) * 6);
+    top: 50%;
+    display: flex;
+    align-items: center;
+    gap: calc(var(--px) * 3);
+    font-size: calc(var(--px) * 9);
+    white-space: nowrap;
+    pointer-events: none;
+    animation: tiramisu-rise 1s ease-out forwards;
+}
+
+.plus-one-crop {
+    position: relative;
+    width: calc(var(--cake-px) * 21);
+    height: calc(var(--cake-px) * 18);
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.plus-one-crop img {
+    position: absolute;
+    left: calc(var(--cake-px) * -50);
+    top: calc(var(--cake-px) * -52);
+    width: calc(var(--cake-px) * 144);
+    height: calc(var(--cake-px) * 144);
+    max-width: none;
+}
+
+@keyframes tiramisu-rise {
+    0% {
+        opacity: 0;
+        transform: translateY(0);
+    }
+    25% {
+        opacity: 1;
+    }
+    60% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(calc(var(--px) * -30));
+    }
+}

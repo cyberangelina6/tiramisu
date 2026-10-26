@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tiramisu</title>
+    <link rel="stylesheet" href="tiramisu.css">
+</head>
+<body>
+    <main class="game">
+        <div class="stage" id="stage">
+            <p class="counter">tiramisus eaten: <span id="count">0</span></p>
+            <img class="frame" src="tiramisu/pixil-frame-0.png" alt="">
+            <button class="window" id="character-button" type="button" aria-label="Eat a tiramisu">
+                <img class="character" id="character" src="tiramisu/pixil-frame-0%20(1).png" alt="">
+            </button>
+        </div>
+
+        <div class="caption">
+            <h1 class="title">sara's infinite tiramisu clicker!</h1>
+            <p class="subtitle">10/12 happy birthday &lt;3</p>
+        </div>
+
+        <section class="leaderboard" aria-labelledby="leaderboard-title">
+            <h2 class="leaderboard-title" id="leaderboard-title">leaderboard</h2>
+            <form class="save-score" id="save-form">
+                <input class="player-name" id="player-name" type="text" maxlength="20" placeholder="your name" autocomplete="nickname" aria-label="your name" required>
+                <button class="save-button" id="save-button" type="submit">save score</button>
+            </form>
+            <p class="leaderboard-status" id="leaderboard-status" aria-live="polite"></p>
+            <ol class="leaderboard-list" id="leaderboard-list"></ol>
+        </section>
+    </main>
+
+    <script src="tiramisu.js"></script>
+</body>
+</html>
