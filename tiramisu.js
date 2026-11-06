@@ -4,7 +4,7 @@ const TIRAMISU_SRC = "tiramisu-cake.png";
 const GIF_LENGTH = 600; // the gif is 3 frames: 100ms + 100ms + 400ms
 
 // fill these in from the supabase project's settings > api keys page
-const SUPABASE_URL = "https://jacahfpbgumspphitmby.supabase.co"; // e.g. "https://abcdefgh.supabase.co"
+const SUPABASE_URL = "https://jacahfpbgumspphitmby.supabase.co/rest/v1/"; // e.g. "https://abcdefgh.supabase.co"
 const SUPABASE_KEY = "sb_publishable_jy6Hsib5ViWwtbUC6QY1Lw_E6REL4eC"; // the publishable (anon) key, safe to show in the page
 const LEADERBOARD_SIZE = 10;
 const NAME_KEY = "tiramisu-player-name";
