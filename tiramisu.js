@@ -1,6 +1,6 @@
-const STILL_SRC = "tiramisu/pixil-frame-0%20(1).png";
-const GIF_SRC = "tiramisu/output-onlinegiftools.gif";
-const TIRAMISU_SRC = "tiramisu/pixil-frame-0%20(2).png";
+const STILL_SRC = "character-still.png";
+const GIF_SRC = "tiramisu-eat.gif";
+const TIRAMISU_SRC = "tiramisu-cake.png";
 const GIF_LENGTH = 600; // the gif is 3 frames: 100ms + 100ms + 400ms
 
 // fill these in from the supabase project's settings > api keys page
